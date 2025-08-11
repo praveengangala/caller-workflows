@@ -1,19 +1,17 @@
-name: Deploy to auth-service
+name: Deploy Auth Service
 
 on:
   push:
-    paths:
-      - "services/auth/"
     branches:
-      - main:
+      - main
+    paths:
+      - "auth-service/**"
 
-  jobs:
-    deploy-auth:
-      uses: ./.github/workflows/resuable-workflow.yml
-      with:
-         service_name: auth-service
-         context_path: ./service/auth
-      secrets:
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKERHUUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-     
+jobs:
+  call-dockerhub-build:
+    uses: ./.github/workflows/resuable-workflow.yml
+    with:
+      service_name: auth-service
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
