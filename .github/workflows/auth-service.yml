@@ -1,13 +1,13 @@
-name: Deploy Auth Service
+name: Deploy Payment Service
 
 on:
-  workflow_dispatch:  # 👈 Manual trigger from GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
-  call-dockerhub-build:
-    uses: ./.github/workflows/dockerhub-build.yml
+  build-image:
+    uses: my-github-user/devops-templates/.github/workflows/reusable-workflow.yml@main
     with:
-      service_name: auth-service
+      service_name: payment-service
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
