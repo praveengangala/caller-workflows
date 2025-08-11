@@ -5,9 +5,10 @@ on:
 
 jobs:
   build-image:
-    uses: my-github-user/devops-templates/.github/workflows/reusable-workflow.yml@main
+    uses: praveengangala/reusable-workflow/.github/workflows/reusable-workflow.yml@main
     with:
       service_name: payment-service
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
