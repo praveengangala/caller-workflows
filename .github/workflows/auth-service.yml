@@ -1,15 +1,11 @@
 name: Deploy Auth Service
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "auth-service/**"
+  workflow_dispatch:  # 👈 Manual trigger from GitHub Actions UI
 
 jobs:
   call-dockerhub-build:
-    uses: ./.github/workflows/resuable-workflow.yml
+    uses: ./.github/workflows/dockerhub-build.yml
     with:
       service_name: auth-service
     secrets:
